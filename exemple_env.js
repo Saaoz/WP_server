@@ -1,0 +1,3 @@
+DB_USER=votre_nom_d_utilisateur
+DB_PASSWORD=votre_mot_de_passe
+API_KEY=votre_cle_d_api
