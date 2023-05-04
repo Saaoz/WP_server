@@ -38,12 +38,35 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`address` (
     UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 ENGINE = InnoDB;
 
+-- Insert 10 addresses différentes
+INSERT  INTO `wibaux_foldings`.`address` (`id`, `street`, `postal_code`, `city`)
+VALUES (NULL, '25 rue du Faubourg Saint-Honoré', '75008', 'Paris'),
+        (NULL, '3 avenue des Fleurs', '06000', 'Nice'),
+        (NULL, '14 rue de la République', '69001', 'Lyon'),
+        (NULL, '2 rue de la Gare', '67000', 'Strasbourg'),
+        (NULL, '6 place Bellecour', '69002', 'Lyon'),
+        (NULL, '10 rue des Rosiers', '75004', 'Paris'),
+        (NULL, '18 rue de la Pompe', '75116', 'Paris'),
+        (NULL, '7 rue des Ecoles', '33000', 'Bordeaux'),
+        (NULL, '15 avenue des Acacias', '75017', 'Paris'),
+        (NULL, '28 rue des Lombards', '75004', 'Paris'),
+        (NULL, '11 rue du Marché', '67000', 'Strasbourg'),
+        (NULL, '9 avenue Foch', '75016', 'Paris'),
+        (NULL, '16 rue des Capucins', '69001', 'Lyon'),
+        (NULL, '2 rue des Cordeliers', '59000', 'Lille'),
+        (NULL, '27 avenue de la Victoire', '06000', 'Nice'),
+        (NULL, '1 rue de la Roquette', '75011', 'Paris'),
+        (NULL, '4 rue du Petit Musc', '75004', 'Paris'),
+        (NULL, '20 rue de la Pompe', '75116', 'Paris'),
+        (NULL, '12 rue de la Paix', '44000', 'Nantes'),
+        (NULL, '33 avenue de la Grande Armée', '75116', 'Paris');
+
 
 -- -----------------------------------------------------
 -- Table `wibaux_foldings`.`worksite`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`worksite` (
-    `id` INT NOT NULL,
+    `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NULL,
     `works_manager_id` INT NOT NULL,
     `address_id` INT NOT NULL,
@@ -62,6 +85,31 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`worksite` (
         ON DELETE NO ACTION
         ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- Insert 20 worksites
+INSERT INTO `wibaux_foldings`.`worksite` (`id`, `name`, `works_manager_id`, `address_id`)
+VALUES 
+(NULL, 'Parking Leclerc', 3, 1),
+(NULL, 'Centre commercial', 2, 5),
+(NULL, 'Hôtel de ville', 1, 8),
+(NULL, 'Immeuble de standing', 5, 16),
+(NULL, 'Résidence étudiante', 4, 11),
+(NULL, 'Maison individuelle', 3, 3),
+(NULL, 'Centre sportif', 1, 19),
+(NULL, 'Ecole primaire', 2, 6),
+(NULL, 'Clinique privée', 4, 9),
+(NULL, 'Usine de production', 5, 7),
+(NULL, "Musée d'art moderne", 1, 13),
+(NULL, 'Bibliothèque municipale', 2, 15),
+(NULL, 'Immeuble de bureaux', 3, 10),
+(NULL, 'Parc résidentiel', 4, 2),
+(NULL, 'Salle de spectacle', 5, 14),
+(NULL, 'Centre de recherche', 1, 12),
+(NULL, 'Gare ferroviaire', 2, 18),
+(NULL, 'Stade municipal', 3, 17),
+(NULL, 'Théâtre de la ville', 4, 20),
+(NULL, 'Piscine municipale', 5, 4);
+
 
 
 -- -----------------------------------------------------
