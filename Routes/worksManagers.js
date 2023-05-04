@@ -32,6 +32,8 @@ router.put('/:id', async (req, res) => {
 });
 
 // Supprime un worksManager en fonction de son id
+// Attention si un chantier existe avec ce worksManager on ne peut pas supprimer
+// il faut supprimer tous les chantiers associés à ce worksManager avant
 router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     const worksManager = await deleteWorksManagerById(id);

@@ -1,12 +1,14 @@
 import express from 'express';
-import worksManagersRoutes from './Routes/worksManagers.js';
+import worksManagers from './Routes/worksManagers.js';
+import addresses from './Routes/addresses.js';
 
 
 const app = express();
 app.use(express.json());
 
 // Routes //
-app.use('/api/works_managers', worksManagersRoutes);
+app.use('/api/works_managers', worksManagers);
+app.use('/api/addresses', addresses);
 
 // gestion des erreurs copiée/collée depuis ce lien : https://expressjs.com/en/guide/error-handling.html
 app.use((err, req, res, next) => {
