@@ -23,16 +23,16 @@ app.get('/api/works_managers/:id', async (req, res) => {
 
 // crée un nouveau workmanager
 app.post('/api/works_managers', async (req, res) => {
-    const { firstname, lastname, mail, login, password } = req.body;
-    const worksManager = await createWorksManager(firstname, lastname, mail, login, password);
+    const { firstname, lastname, mail } = req.body;
+    const worksManager = await createWorksManager(firstname, lastname, mail);
     res.status(201).send(worksManager);
 })
 
 // modifie un nouveau workmanager
 app.put('/api/works_managers/:id', async (req, res) => {
     const id = req.params.id;
-    const { firstname, lastname, mail, login, password } = req.body;
-    const worksManager = await updateWorksManager(id, firstname, lastname, mail, login, password);
+    const { firstname, lastname, mail} = req.body;
+    const worksManager = await updateWorksManager(id, firstname, lastname, mail);
     res.send(worksManager);
 })
 
