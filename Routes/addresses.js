@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAddresses, getAddressesById, createAddress, updateAddress, deleteAddressById } from '../Querries/addresses.js';
+import { getAddresses, getAddressesById, createAddress, updateAddress, getAddressesByCity, deleteAddressById } from '../Querries/addresses.js';
 import { getWorkSitesByAddressId } from '../Querries/workSites.js';
 
 const router = express.Router();
@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', async (req, res) => {
     const addresses = await getAddresses();
     res.send(addresses);
-}) 
+})
 
 // Retourne une seule adresse sous la forme d'un objet {id, street, postal_code, city}
 router.get('/:id', async (req, res) => {
@@ -35,12 +35,19 @@ router.put('/:id', async (req, res) => {
     }
 })
 
+// Trouve les adresses en fonction du nom de la ville
+router.get('/city/:city', async (req, res) => {
+    const city = req.params.city;
+    const addresses = await getAddressesByCity(city);
+    res.send(addresses);
+})
+
 // Supprime une adresse en fonction de son id
 // Attention si un chantier existe avec cette adresse on ne peut pas supprimer
 // il faut supprimer tous les chantiers associés à cette adresse avant
 router.delete('/:id', async (req, res) => {
     const addressId = req.params.id;
-   
+
     // Récupérer tous les worksites associés à cette adresse
     const worksites = await getWorkSitesByAddressId(addressId);
 
@@ -49,7 +56,7 @@ router.delete('/:id', async (req, res) => {
         const worksitesIds = worksites.map(worksite => worksite.id);
         res.status(400).send(`Impossible de supprimer cette adresse car elle est associée aux chantiers suivants : ${worksitesIds.join(", ")}`);
         return;
-    } 
+    }
 
     // Supprimer l'adresse si aucun chantier n'est associé
     const address = await deleteAddressById(addressId);

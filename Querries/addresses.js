@@ -32,6 +32,14 @@ export async function updateAddress(id, street, postal_code, city) {
     return getAddressesById(id)
 }
 
+export async function getAddressesByCity(city) {
+    const [rows] = await pool.query(`
+    SELECT * 
+    FROM address 
+    WHERE city = ?`, [city])
+    return rows
+}
+
 export async function deleteAddressById(id) {
     const [result] = await pool.query(`
     DELETE
