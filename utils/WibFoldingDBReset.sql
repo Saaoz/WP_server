@@ -117,18 +117,47 @@ VALUES
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`order_sheet` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `create_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   
     `worksite_id` INT NOT NULL,
     `worksite_address_id` INT NOT NULL,
     PRIMARY KEY (`id`, `worksite_id`, `worksite_address_id`),
-    INDEX `fk_order_sheet_worksite1_idx` (`worksite_address_id` ASC),
+    INDEX `fk_order_sheet_worksite1_idx` (`worksite_id` ASC),
     CONSTRAINT `fk_order_sheet_worksite1`
+        FOREIGN KEY (`worksite_id`)
+        REFERENCES `wibaux_foldings`.`worksite` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    INDEX `fk_order_sheet_address1_idx` (`worksite_address_id` ASC),
+    CONSTRAINT `fk_order_sheet_address1`
         FOREIGN KEY (`worksite_address_id`)
-        REFERENCES `wibaux_foldings`.`worksite` (`address_id`)
+        REFERENCES `wibaux_foldings`.`address` (`id`)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- Insert 20 order_sheet différentes
+INSERT INTO `wibaux_foldings`.`order_sheet` (`id`, `worksite_id`, `worksite_address_id`)
+VALUES 
+(NULL, 3, 1),
+(NULL, 2, 5),
+(NULL, 1, 8),
+(NULL, 5, 16),
+(NULL, 4, 11),
+(NULL, 3, 3),
+(NULL, 1, 19),
+(NULL, 2, 6),
+(NULL, 4, 9),
+(NULL, 5, 7),
+(NULL, 1, 13),
+(NULL, 2, 15),
+(NULL, 3, 10),
+(NULL, 4, 2),
+(NULL, 5, 14),
+(NULL, 1, 12),
+(NULL, 2, 18),
+(NULL, 3, 17),
+(NULL, 4, 20),
+(NULL, 5, 4);
 
 -- -----------------------------------------------------
 -- Table `wibaux_foldings`.`folding`

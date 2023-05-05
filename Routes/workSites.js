@@ -36,16 +36,16 @@ router.post('/', async (req, res) => {
         errors.push(`Il n'y a aucune adresse avec l'id ${address_id}`);
     }
 
-
+    // Si il manque un conducteur de travaux ou une adresse, afficher un message d'erreur
     if (errors.length > 0) {
         res.status(400).send(errors);
-    } else {
+    } 
+    
+    // Sinon ajouter le workSite
+    else {
         const workSite = await createWorkSite(name, works_manager_id, address_id);
         res.status(201).send(workSite);
     }
-
-
-
 })
 
 // Modifie un workSite

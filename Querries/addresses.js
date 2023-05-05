@@ -21,7 +21,7 @@ export async function createAddress(street, postal_code, city) {
     (street, postal_code, city)
     VALUES (?, ?, ?)`, [street, postal_code, city])
     const id = result.insertId
-    return getAddressesById(id)
+    return getAddressById(id)
 }
 
 export async function updateAddress(id, street, postal_code, city) {
@@ -29,7 +29,7 @@ export async function updateAddress(id, street, postal_code, city) {
     UPDATE address
     SET street = ?, postal_code = ?, city = ?
     WHERE id = ?`, [street, postal_code, city, id])
-    return getAddressesById(id)
+    return getAddressById(id)
 }
 
 export async function getAddressesByCity(city) {
