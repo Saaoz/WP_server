@@ -1,5 +1,6 @@
 import express from 'express';
 import { getWorksManagers, getWorksManagerById, createWorksManager, updateWorksManager, deleteWorksManagerById } from '../Querries/worksManagers.js';
+import { getWorkSitesByWorksManagerId } from '../Querries/workSites.js';
 
 const router = express.Router();
 
@@ -33,11 +34,25 @@ router.put('/:id', async (req, res) => {
 
 // Supprime un worksManager en fonction de son id
 // Attention si un chantier existe avec ce worksManager on ne peut pas supprimer
-// il faut supprimer tous les chantiers associés à ce worksManager avant
+// il faut supprimer tous les worksites associés à ce worksManager avant
 router.delete('/:id', async (req, res) => {
-    const id = req.params.id;
-    const worksManager = await deleteWorksManagerById(id);
+    const worksManagerId = req.params.id;
+
+    // Récupérer tous les worksites associés à cette personne
+    const worksites = await getWorkSitesByWorksManagerId(worksManagerId);
+
+    // Si des worksites sont associés à cette personne, afficher un message d'erreur
+    if (worksites.length > 0) {
+        const worksitesIds = worksites.map(worksite => worksite.id);
+        res.status(400).send(`Impossible de supprimer ce conducteur de travaux car il est associé aux chantiers suivants : ${worksitesIds.join(", ")}`);
+        return;
+    }
+
+    // Supprimer le worksManager si aucun chantier n'est associé
+    const worksManager = await deleteWorksManagerById(worksManagerId);
     res.send(worksManager);
 });
+
+
 
 export default router;

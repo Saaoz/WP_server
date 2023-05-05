@@ -37,5 +37,6 @@ export async function deleteAddressById(id) {
     DELETE
     FROM address
     WHERE id = ?`, [id])
-    return `Deleted address with id: ${id}`
+    return `Adresse avec l'id: ${id} supprimée`
 }
+

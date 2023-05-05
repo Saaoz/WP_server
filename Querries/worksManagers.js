@@ -36,5 +36,5 @@ export async function deleteWorksManagerById(id) {
     DELETE
     FROM works_manager
     WHERE id = ?`, [id])
-    return `Deleted works manager with id: ${id}`
+    return `Conducteur de travaux avec l'id: ${id} supprimé`
 }
