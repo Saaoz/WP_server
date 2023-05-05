@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAddresses, getAddressesById, createAddress, updateAddress, getAddressesByCity, deleteAddressById } from '../Querries/addresses.js';
+import { getAddresses, getAddressById, createAddress, updateAddress, getAddressesByCity, deleteAddressById } from '../Querries/addresses.js';
 import { getWorkSitesByAddressId } from '../Querries/workSites.js';
 
 const router = express.Router();
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 // Retourne une seule adresse sous la forme d'un objet {id, street, postal_code, city}
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
-    const address = await getAddressesById(id);
+    const address = await getAddressById(id);
     res.send(address);
 })
 

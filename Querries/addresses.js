@@ -6,7 +6,7 @@ export async function getAddresses() {
     return rows
 }
 
-export async function getAddressesById(id) {
+export async function getAddressById(id) {
     const [rows] = await pool.query(`
     SELECT * 
     FROM address 
