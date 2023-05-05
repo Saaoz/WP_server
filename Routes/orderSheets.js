@@ -11,6 +11,20 @@ router.get('/', async (req, res) => {
     res.send(orderSheets);
 })
 
+// Retourne toutes les fiches de commandes en fonction de l'id d'un chantier sous la forme d'un tableau d'objets { id, created_at, worksite_id, worksite_address_id }
+router.get('/worksite/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const orderSheets = await getOrderSheets();
+    const orderSheetsByWorksite = []
+
+    orderSheets.forEach(orderSheet => {
+        if (orderSheet.worksite_id === id ) {
+            orderSheetsByWorksite.push(orderSheet);
+        }
+    })
+    res.send(orderSheetsByWorksite.reverse());
+})
+
 // Retourne une fiche de commande sous la forme d'un objet { id, created_at, worksite_id, worksite_address_id }
 router.get('/:id', async (req, res) => {
     const id = req.params.id;
