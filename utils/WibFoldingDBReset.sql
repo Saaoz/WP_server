@@ -1,4 +1,3 @@
-
 -- -----------------------------------------------------
 -- Schema wibaux_foldings
 -- -----------------------------------------------------
@@ -181,19 +180,44 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`folding` (
     `angle3` INT NULL,
     `angle4` INT NULL,
     `angle5` INT NULL,
-    `consultation_id` INT NOT NULL,
     `order_sheet_id` INT NOT NULL,
     `order_sheet_worksite_id` INT NOT NULL,
     `order_sheet_worksite_address_id` INT NOT NULL,
     UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-    PRIMARY KEY (`id`, `consultation_id`, `order_sheet_id`, `order_sheet_worksite_id`, `order_sheet_worksite_address_id`),
-    INDEX `fk_folding_order_sheet1_idx` (`order_sheet_id` ASC, `order_sheet_worksite_id` ASC, `order_sheet_worksite_address_id` ASC),
+    PRIMARY KEY (`id`, `order_sheet_id`, `order_sheet_worksite_id`, `order_sheet_worksite_address_id`),
+    INDEX `fk_folding_order_sheet1_idx` (`order_sheet_id` ASC),
     CONSTRAINT `fk_folding_order_sheet1`
-    FOREIGN KEY (`order_sheet_id` , `order_sheet_worksite_id`)
-    REFERENCES `wibaux_foldings`.`order_sheet` (`id` , `worksite_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+        FOREIGN KEY (`order_sheet_id`)
+        REFERENCES `wibaux_foldings`.`order_sheet` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    INDEX `fk_folding_worksite1_idx` (`order_sheet_worksite_id` ASC),
+    CONSTRAINT `fk_folding_worksite1`
+        FOREIGN KEY (`order_sheet_worksite_id`)
+        REFERENCES `wibaux_foldings`.`worksite` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    INDEX `fk_folding_address1_idx` (`order_sheet_worksite_address_id` ASC),
+    CONSTRAINT `fk_folding_address1`
+        FOREIGN KEY (`order_sheet_worksite_address_id`)
+        REFERENCES `wibaux_foldings`.`address` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- Insert 40 pliages différents
+INSERT INTO `wibaux_foldings`.`folding` (`category`, `type`, `ral`, `thickness`, `quantity`, `long`, `dim1`, `dim2`, `dim3`, `dim4`, `dim5`, `dim6`, `angle1`, `angle2`, `angle3`, `angle4`, `angle5`, `order_sheet_id`, `order_sheet_worksite_id`, `order_sheet_worksite_address_id`)
+VALUES 
+('Pliage A', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 1, 1, 1),
+('Pliage B', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 2, 2, 2),
+('Pliage C', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 3, 3, 3),
+('Pliage D', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 4, 4, 4),
+('Pliage E', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 5, 5, 5),
+('Pliage F', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 6, 6, 7),
+('Pliage G', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 7, 7, 7),
+('Pliage H', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 8, 8, 8),
+('Pliage I', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 9, 9, 9),
+('Pliage J', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 10, 10, 10);
 
 
 -- -----------------------------------------------------
