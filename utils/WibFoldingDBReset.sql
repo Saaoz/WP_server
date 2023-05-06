@@ -226,15 +226,28 @@ VALUES
 CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`suppliers` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NOT NULL,
-    `email` VARCHAR(45) NULL,
+    `mail` VARCHAR(45) NULL,
     `order_sheet_id` INT NOT NULL,
-    `order_sheet_worksite_id` INT NOT NULL,
-    `order_sheet_worksite_address_id` INT NOT NULL,
-    PRIMARY KEY (`id`, `order_sheet_id`, `order_sheet_worksite_id`, `order_sheet_worksite_address_id`),
-    INDEX `fk_suppliers_order_sheet1_idx` (`order_sheet_id` ASC, `order_sheet_worksite_id` ASC, `order_sheet_worksite_address_id` ASC),
+    PRIMARY KEY (`id`, `order_sheet_id`),
+    INDEX `fk_suppliers_order_sheet1_idx` (`order_sheet_id` ASC),
     CONSTRAINT `fk_suppliers_order_sheet1`
-    FOREIGN KEY (`order_sheet_id` , `order_sheet_worksite_id` , `order_sheet_worksite_address_id`)
-    REFERENCES `wibaux_foldings`.`order_sheet` (`id` , `worksite_id` , `worksite_address_id`)
+    FOREIGN KEY (`order_sheet_id`)
+    REFERENCES `wibaux_foldings`.`order_sheet` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- insert suppliers
+INSERT INTO `wibaux_foldings`.`suppliers` (`name`, `mail`, `order_sheet_id`)
+VALUES 
+('Fournisseur 1', 'fournisseur1@gmail.com', 1),
+('Fournisseur 2', 'fournisseur2@gmail.com', 2),
+('Fournisseur 3', 'fournisseur3@gmail.com', 3),
+('Fournisseur 4', 'fournisseur4@gmail.com', 4),
+('Fournisseur 5', 'fournisseur5@gmail.com', 5),
+('Fournisseur 6', 'fournisseur6@gmail.com', 6),
+('Fournisseur 7', 'fournisseur7@gmail.com', 7),
+('Fournisseur 8', 'fournisseur8@gmail.com', 8),
+('Fournisseur 9', 'fournisseur9@gmail.com', 9),
+('Fournisseur 10', 'fournisseur10@gmail.com', 10);
+
