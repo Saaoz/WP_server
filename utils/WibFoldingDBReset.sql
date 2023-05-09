@@ -13,16 +13,18 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`works_manager` (
     `firstname` VARCHAR(50) NOT NULL,
     `lastname` VARCHAR(50) NOT NULL,
     `mail` VARCHAR(50) NOT NULL,
+    `login` VARCHAR(50) NOT NULL,
+    `password` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 -- Insert 5 works managers
-INSERT INTO `wibaux_foldings`.`works_manager` (`id`, `firstname`, `lastname`, `mail`)
-VALUES (NULL, 'John', 'Doe', 'johndoe@example.com'),
-        (NULL, 'Alice', 'Smith', 'alicesmith@example.com'),
-        (NULL, 'Lisa', 'Johnson', 'lisajohnson@example.com'),
-        (NULL, 'Karen', 'Brown', 'karenbrown@example.com'),
-        (NULL, 'Susan', 'Wilson', 'susanwilson@example.com');
+INSERT INTO `wibaux_foldings`.`works_manager` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`)
+VALUES (NULL, 'John', 'Doe', 'johndoe@example.com', 'john', 'passwordJohn'),
+        (NULL, 'Alice', 'Smith', 'alicesmith@example.com', 'alice', 'passwordAlice'),
+        (NULL, 'Lisa', 'Johnson', 'lisajohnson@example.com' , 'lisa', 'passwordLisa'),
+        (NULL, 'Karen', 'Brown', 'karenbrown@example.com', 'karen', 'passwordKaren'),
+        (NULL, 'Susan', 'Wilson', 'susanwilson@example.com', 'susan', 'passwordSusan');
 
 
 -- -----------------------------------------------------
@@ -165,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`folding` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `category` VARCHAR(50) NOT NULL,
     `type` VARCHAR(50) NOT NULL,
-    `ral` INT(5) NULL,
+    `ral` INT(4) NULL,
     `thickness` INT NULL,
     `quantity` INT NULL,
     `long` INT NULL,
@@ -208,12 +210,12 @@ ENGINE = InnoDB;
 -- Insert 40 pliages différents
 INSERT INTO `wibaux_foldings`.`folding` (`category`, `type`, `ral`, `thickness`, `quantity`, `long`, `dim1`, `dim2`, `dim3`, `dim4`, `dim5`, `dim6`, `angle1`, `angle2`, `angle3`, `angle4`, `angle5`, `order_sheet_id`, `order_sheet_worksite_id`, `order_sheet_worksite_address_id`)
 VALUES 
-('Pliage A', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 1, 1, 1),
-('Pliage B', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 2, 2, 2),
-('Pliage C', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 3, 3, 3),
-('Pliage D', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 4, 4, 4),
-('Pliage E', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 5, 5, 5),
-('Pliage F', 'Acier', 26530, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 6, 6, 7),
+('Pliage A', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 1, 1, 1),
+('Pliage B', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 2, 2, 2),
+('Pliage C', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 3, 3, 3),
+('Pliage D', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 4, 4, 4),
+('Pliage E', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 5, 5, 5),
+('Pliage F', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 6, 6, 7),
 ('Pliage G', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 7, 7, 7),
 ('Pliage H', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 8, 8, 8),
 ('Pliage I', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 9, 9, 9),
@@ -250,4 +252,3 @@ VALUES
 ('Fournisseur 8', 'fournisseur8@gmail.com', 8),
 ('Fournisseur 9', 'fournisseur9@gmail.com', 9),
 ('Fournisseur 10', 'fournisseur10@gmail.com', 10);
-
