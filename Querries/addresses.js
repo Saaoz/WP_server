@@ -15,6 +15,7 @@ export async function getAddressById(id) {
 }
 
 export async function createAddress(street, postal_code, city) {
+    if (street && postal_code && city) {
     const [result] = await pool.query(`
     INSERT
     INTO address 
@@ -22,14 +23,21 @@ export async function createAddress(street, postal_code, city) {
     VALUES (?, ?, ?)`, [street, postal_code, city])
     const id = result.insertId
     return getAddressById(id)
+    } else {
+    return `Adresse non crée ! Veuillez vérifier que les champs street, postal_code, city sont remplis.`
+    }
 }
 
 export async function updateAddress(id, street, postal_code, city) {
+    if (street && postal_code && city) {
     const [result] = await pool.query(`
     UPDATE address
     SET street = ?, postal_code = ?, city = ?
     WHERE id = ?`, [street, postal_code, city, id])
     return getAddressById(id)
+    } else {
+    return `Adresse inchangée ! Veuillez vérifier que les champs street, postal_code, city sont remplis.`
+    }
 }
 
 export async function getAddressesByCity(city) {

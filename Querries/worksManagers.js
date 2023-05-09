@@ -14,6 +14,7 @@ export async function getWorksManagerById(id) {
 }
 
 export async function createWorksManager(firstname, lastname, mail, login, password) {
+    if (firstname && lastname && mail && login && password) {
     const [result] = await pool.query(`
     INSERT
     INTO works_manager 
@@ -21,14 +22,21 @@ export async function createWorksManager(firstname, lastname, mail, login, passw
     VALUES (?, ?, ?, ?, ?)`, [firstname, lastname, mail, login, password])
     const id = result.insertId
     return getWorksManagerById(id)
+    } else {
+        return `Conducteur de travaux non créé ! Veuillez remplir tous les champs en vérifiant leurs noms : firstname, lastname, mail, login, password`
+    }
 }
 
 export async function updateWorksManager(id, firstname, lastname, mail, login, password) {
+    if (firstname && lastname && mail && login && password) {
     const [result] = await pool.query(`
     UPDATE works_manager
     SET firstname = ?, lastname = ?, mail = ?, login = ?, password = ?
     WHERE id = ?`, [firstname, lastname, mail, login, password, id])
     return getWorksManagerById(id)
+    } else {
+        return `Conducteur de travaux inchangé ! Veuillez remplir tous les champs en vérifiant leurs noms : firstname, lastname, mail, login, password`
+    }
 }
 
 export async function deleteWorksManagerById(id) {

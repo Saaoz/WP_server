@@ -44,7 +44,7 @@ router.delete('/:id', async (req, res) => {
     // Si des worksites sont associés à cette personne, afficher un message d'erreur
     if (worksites.length > 0) {
         const worksitesIds = worksites.map(worksite => worksite.id);
-        res.status(400).send(`Impossible de supprimer ce conducteur de travaux car il est associé aux chantiers suivants : ${worksitesIds.join(", ")}`);
+        res.status(400).send(`Impossible de supprimer ce conducteur de travaux ${worksManagerId} car il est associé aux chantiers suivants : ${worksitesIds.join(", ")}`);
         return;
     }
 
@@ -52,7 +52,5 @@ router.delete('/:id', async (req, res) => {
     const worksManager = await deleteWorksManagerById(worksManagerId);
     res.send(worksManager);
 });
-
-
 
 export default router;

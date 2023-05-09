@@ -14,6 +14,7 @@ export async function getWorkSiteById(id) {
 }
 
 export async function createWorkSite(name, works_manager_id, address_id) {
+    if (name && works_manager_id && address_id) {
     const [result] = await pool.query(`
     INSERT
     INTO worksite 
@@ -21,14 +22,21 @@ export async function createWorkSite(name, works_manager_id, address_id) {
     VALUES (?, ?, ?)`, [name, works_manager_id, address_id])
     const id = result.insertId
     return getWorkSiteById(id)
+    } else {
+        return `Chantier non crée ! Veuillez renseigner tous les champs et vérifier leurs noms : name, works_manager_id, address_id`
+    }
 }
 
 export async function updateWorkSite(id, name, works_manager_id, address_id) {
+    if (name && works_manager_id && address_id) {
     const [result] = await pool.query(`
     UPDATE worksite
     SET name = ?, works_manager_id = ?, address_id = ?
     WHERE id = ?`, [name, works_manager_id, address_id, id])
     return getWorkSiteById(id)
+    } else {
+        return `Chantier inchangé ! Veuillez renseigner tous les champs et vérifier leurs noms : name, works_manager_id, address_id`
+    }
 }
 
 export async function deleteWorkSiteById(id) {

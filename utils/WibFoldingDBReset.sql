@@ -33,7 +33,7 @@ VALUES (NULL, 'John', 'Doe', 'johndoe@example.com', 'john', 'passwordJohn'),
 CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`address` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `street` VARCHAR(255) NOT NULL,
-    `postal_code` VARCHAR(10) NOT NULL,
+    `postal_code` VARCHAR(15) NOT NULL,
     `city` VARCHAR(255) NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `id_UNIQUE` (`id` ASC))
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`folding` (
     `ral` INT(4) NULL,
     `thickness` INT NULL,
     `quantity` INT NULL,
-    `long` INT NULL,
+    `length` INT NULL,
     `dim1` INT NULL,
     `dim2` INT NULL,
     `dim3` INT NULL,
@@ -183,64 +183,50 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`folding` (
     `angle4` INT NULL,
     `angle5` INT NULL,
     `order_sheet_id` INT NOT NULL,
-    `order_sheet_worksite_id` INT NOT NULL,
-    `order_sheet_worksite_address_id` INT NOT NULL,
     UNIQUE INDEX `id_UNIQUE` (`id` ASC),
-    PRIMARY KEY (`id`, `order_sheet_id`, `order_sheet_worksite_id`, `order_sheet_worksite_address_id`),
+    PRIMARY KEY (`id`, `order_sheet_id`),
     INDEX `fk_folding_order_sheet1_idx` (`order_sheet_id` ASC),
     CONSTRAINT `fk_folding_order_sheet1`
         FOREIGN KEY (`order_sheet_id`)
         REFERENCES `wibaux_foldings`.`order_sheet` (`id`)
         ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
-    INDEX `fk_folding_worksite1_idx` (`order_sheet_worksite_id` ASC),
-    CONSTRAINT `fk_folding_worksite1`
-        FOREIGN KEY (`order_sheet_worksite_id`)
-        REFERENCES `wibaux_foldings`.`worksite` (`id`)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
-    INDEX `fk_folding_address1_idx` (`order_sheet_worksite_address_id` ASC),
-    CONSTRAINT `fk_folding_address1`
-        FOREIGN KEY (`order_sheet_worksite_address_id`)
-        REFERENCES `wibaux_foldings`.`address` (`id`)
-        ON DELETE NO ACTION
         ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 -- Insert 40 pliages différents
-INSERT INTO `wibaux_foldings`.`folding` (`category`, `type`, `ral`, `thickness`, `quantity`, `long`, `dim1`, `dim2`, `dim3`, `dim4`, `dim5`, `dim6`, `angle1`, `angle2`, `angle3`, `angle4`, `angle5`, `order_sheet_id`, `order_sheet_worksite_id`, `order_sheet_worksite_address_id`)
+INSERT INTO `wibaux_foldings`.`folding` (`category`, `type`, `ral`, `thickness`, `quantity`, `length`, `dim1`, `dim2`, `dim3`, `dim4`, `dim5`, `dim6`, `angle1`, `angle2`, `angle3`, `angle4`, `angle5`, `order_sheet_id`)
 VALUES 
-('Pliage A', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 1, 1, 1),
-('Pliage B', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 2, 2, 2),
-('Pliage C', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 3, 3, 3),
-('Pliage D', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 4, 4, 4),
-('Pliage E', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 5, 5, 5),
-('Pliage F', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 6, 6, 7),
-('Pliage G', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 7, 7, 7),
-('Pliage H', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 8, 8, 8),
-('Pliage I', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 9, 9, 9),
-('Pliage J', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 10, 10, 10);
+('Pliage A', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 1),
+('Pliage B', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 2),
+('Pliage C', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 3),
+('Pliage D', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 4),
+('Pliage E', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 5),
+('Pliage F', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 6),
+('Pliage G', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 7),
+('Pliage H', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 8),
+('Pliage I', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 9),
+('Pliage J', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 10);
 
 
 -- -----------------------------------------------------
--- Table `wibaux_foldings`.`suppliers`
+-- Table `wibaux_foldings`.`supplier`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`suppliers` (
+CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`supplier` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(50) NOT NULL,
     `mail` VARCHAR(45) NULL,
-    `order_sheet_id` INT NOT NULL,
-    PRIMARY KEY (`id`, `order_sheet_id`),
-    INDEX `fk_suppliers_order_sheet1_idx` (`order_sheet_id` ASC),
-    CONSTRAINT `fk_suppliers_order_sheet1`
-    FOREIGN KEY (`order_sheet_id`)
-    REFERENCES `wibaux_foldings`.`order_sheet` (`id`)
+    `folding_id` INT NOT NULL,
+    PRIMARY KEY (`id`, `folding_id`),
+    INDEX `fk_supplier_folding_id1_idx` (`folding_id` ASC),
+    CONSTRAINT `fk_supplier_folding_id1`
+    FOREIGN KEY (`folding_id`)
+    REFERENCES `wibaux_foldings`.`folding` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
--- insert suppliers
-INSERT INTO `wibaux_foldings`.`suppliers` (`name`, `mail`, `order_sheet_id`)
+-- insert supplier
+INSERT INTO `wibaux_foldings`.`supplier` (`name`, `mail`, `folding_id`)
 VALUES 
 ('Fournisseur 1', 'fournisseur1@gmail.com', 1),
 ('Fournisseur 2', 'fournisseur2@gmail.com', 2),

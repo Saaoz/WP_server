@@ -38,3 +38,11 @@ export async function deleteOrderSheetById(id) {
     WHERE id = ?`, [id])
     return `OrderSheet avec l'id: ${id} supprimée`
 }
+
+export async function getOrderSheetsByWorksiteId(worksite_id) {
+    const [rows] = await pool.query(`
+    SELECT * 
+    FROM order_sheet 
+    WHERE worksite_id = ?`, [worksite_id])
+    return rows
+}

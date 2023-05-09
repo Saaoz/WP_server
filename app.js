@@ -3,6 +3,8 @@ import worksManagers from './Routes/worksManagers.js';
 import addresses from './Routes/addresses.js';
 import workSites from './Routes/workSites.js';
 import orderSheets from './Routes/orderSheets.js';
+import foldings from './Routes/foldings.js';
+import suppliers from './Routes/suppliers.js'
 
 
 const app = express();
@@ -12,7 +14,9 @@ app.use(express.json());
 app.use('/api/works_managers', worksManagers);
 app.use('/api/addresses', addresses);
 app.use('/api/work_sites', workSites);
-app.use('/api/order_sheets', orderSheets)
+app.use('/api/order_sheets', orderSheets);
+app.use('/api/foldings', foldings);
+app.use('/api/suppliers', suppliers)
 
 // gestion des erreurs copiée/collée depuis ce lien : https://expressjs.com/en/guide/error-handling.html
 app.use((err, req, res, next) => {
