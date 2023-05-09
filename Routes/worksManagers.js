@@ -19,16 +19,16 @@ router.get('/:id', async (req, res) => {
 
 // Ajoute un worksManager
 router.post('/', async (req, res) => {
-    const { firstname, lastname, mail } = req.body;
-    const worksManager = await createWorksManager(firstname, lastname, mail);
+    const { firstname, lastname, mail, login, password } = req.body;
+    const worksManager = await createWorksManager(firstname, lastname, mail, login, password);
     res.status(201).send(worksManager);
 });
 
 // Modifie un worksManager
 router.put('/:id', async (req, res) => {
     const id = req.params.id;
-    const { firstname, lastname, mail } = req.body;
-    const worksManager = await updateWorksManager(id, firstname, lastname, mail);
+    const { firstname, lastname, mail, login, password } = req.body;
+    const worksManager = await updateWorksManager(id, firstname, lastname, mail, login, password);
     res.send(worksManager);
 });
 

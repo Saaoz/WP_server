@@ -13,20 +13,20 @@ export async function getWorksManagerById(id) {
     return rows[0]
 }
 
-export async function createWorksManager(firstname, lastname, mail) {
+export async function createWorksManager(firstname, lastname, mail, login, password) {
     const [result] = await pool.query(`
     INSERT
     INTO works_manager 
-    (firstname, lastname, mail)
-    VALUES (?, ?, ?)`, [firstname, lastname, mail])
+    (firstname, lastname, mail, login, password)
+    VALUES (?, ?, ?, ?, ?)`, [firstname, lastname, mail, login, password])
     const id = result.insertId
     return getWorksManagerById(id)
 }
 
-export async function updateWorksManager(id, firstname, lastname, mail) {
+export async function updateWorksManager(id, firstname, lastname, mail, login, password) {
     const [result] = await pool.query(`
     UPDATE works_manager
-    SET firstname = ?, lastname = ?, mail = ?
+    SET firstname = ?, lastname = ?, mail = ?, login = ?, password = ?
     WHERE id = ?`, [firstname, lastname, mail, login, password, id])
     return getWorksManagerById(id)
 }
