@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
 
 // Ajoute un folding en vérifiant si la fiche de commande existe
 router.post('/', async (req, res) => {
-    const { category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id } = req.body;
+    const { identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id } = req.body;
     const errors = [];
 
     // Vérifie si la fiche de commande existe
@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
         errors.push(`Il n'y a aucune fiche de commande avec l'id ${order_sheet_id}`);
         res.status(400).send(errors);
     } else {
-        const folding = await createFolding(category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id)
+        const folding = await createFolding(identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id)
         res.status(201).send(folding);
     }
 })
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 // Modifie un folding
 router.put('/:id', async (req, res) => {
     const id = req.params.id;
-    const { category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id } = req.body;
+    const { identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id } = req.body;
     const errors = [];
     // Vérifie si la fiche de commande existe
     const orderSheet = await getOrderSheetById(order_sheet_id);
@@ -46,7 +46,7 @@ router.put('/:id', async (req, res) => {
         errors.push(`Il n'y a aucune fiche de commande avec l'id ${order_sheet_id}`);
         res.status(400).send(errors);
     } else {
-        const folding = await updateFolding(id, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id)
+        const folding = await updateFolding(id, identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id)
         res.status(201).send(folding)
         if (!folding) {
             res.sendStatus(404)
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
 })
 
 // Supprime un folding en fonction de son id
-// Attention si un ou plusieurs suppliers exsitent avec ce folding on ne peut pas supprimer
+// Attention si un ou plusieurs suppliers existent avec ce folding on ne peut pas supprimer
 // il faut supprimer tous les suppliers associés à ce folding avant
 router.delete('/:id', async (req, res) => {
     const id = req.params.id;

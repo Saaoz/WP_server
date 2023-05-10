@@ -165,7 +165,8 @@ VALUES
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`folding` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `category` VARCHAR(50) NOT NULL,
+    `identification` VARCHAR(10) NOT NULL,
+    `category` VARCHAR(100) NOT NULL,
     `type` VARCHAR(50) NOT NULL,
     `ral` INT(4) NULL,
     `thickness` INT NULL,
@@ -177,6 +178,7 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`folding` (
     `dim4` INT NULL,
     `dim5` INT NULL,
     `dim6` INT NULL,
+    `dev` INT NULL,
     `angle1` INT NULL,
     `angle2` INT NULL,
     `angle3` INT NULL,
@@ -194,18 +196,18 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`folding` (
 ENGINE = InnoDB;
 
 -- Insert 40 pliages différents
-INSERT INTO `wibaux_foldings`.`folding` (`category`, `type`, `ral`, `thickness`, `quantity`, `length`, `dim1`, `dim2`, `dim3`, `dim4`, `dim5`, `dim6`, `angle1`, `angle2`, `angle3`, `angle4`, `angle5`, `order_sheet_id`)
+INSERT INTO `wibaux_foldings`.`folding` (`identification`, `category`, `type`, `ral`, `thickness`, `quantity`, `length`, `dim1`, `dim2`, `dim3`, `dim4`, `dim5`, `dim6`, `dev`, `angle1`, `angle2`, `angle3`, `angle4`, `angle5`, `order_sheet_id`)
 VALUES 
-('Pliage A', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 1),
-('Pliage B', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 2),
-('Pliage C', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 3),
-('Pliage D', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 4),
-('Pliage E', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 5),
-('Pliage F', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, NULL, NULL, NULL, 321, 321, NULL, NULL, NULL, 6),
-('Pliage G', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 7),
-('Pliage H', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 8),
-('Pliage I', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 9),
-('Pliage J', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 10);
+('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 353423, 321, 321, NULL, NULL, NULL, 1),
+('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 5685, NULL, NULL, 32423423, 321, 321, NULL, NULL, NULL, 2),
+('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3243, 321, 321, NULL, NULL, NULL, 3),
+('B','Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3243, 321, 321, NULL, NULL, NULL, 4),
+('A','Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 324, 321, 321, NULL, NULL, NULL, 5),
+('C','Tôle de tente', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3673, 321, 321, NULL, NULL, NULL, 6),
+('A','Pikachu', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 3572, 156, 239, NULL, NULL, NULL, 7),
+('A','Dracaufeu', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 9546, 156, 239, NULL, NULL, NULL, 8),
+('D','Tortank', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 573, 156, 239, NULL, NULL, NULL, 9),
+('A','Florizarre', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 10);
 
 
 -- -----------------------------------------------------

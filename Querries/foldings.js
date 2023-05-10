@@ -13,25 +13,26 @@ export async function getFoldingById(id) {
     return rows[0]
 }
 
-export async function createFolding(category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id) {
-    if (category && type && ral && thickness && quantity && length && dim1 && angle1 && order_sheet_id) {
+export async function createFolding(identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id) {
+    if (identification && category && type && ral && thickness && quantity && length && dim1 && dev && order_sheet_id) {
     const [result] = await pool.query(`
-    INSERT
+    INSERT 
     INTO folding
-    (category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id])
+    (identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id])
     const id = result.insertId
     return getFoldingById(id)
     } else {
-        return `Pliage non créé ! Veuillez remplir tous les champs en vérifiant leurs noms : category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id`
+        return `Pliage non créé ! Veuillez remplir tous les champs en vérifiant leurs noms : identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id`
     }
 }
 
-export async function updateFolding(id, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id) {
-    if (category && type && ral && thickness && quantity && length && dim1 && angle1 && order_sheet_id) {
+export async function updateFolding(id, identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id) {
+    if (identification && category && type && ral && thickness && quantity && length && dim1 && dev && order_sheet_id) {
     const [result] = await pool.query(`
     UPDATE folding
-    SET category = ?,   
+    SET identification = ?,
+        category = ?,   
         type = ?,
         ral = ?,
         thickness = ?,
@@ -43,16 +44,17 @@ export async function updateFolding(id, category, type, ral, thickness, quantity
         dim4 = ?,
         dim5 = ?,
         dim6 = ?,
+        dev = ?,
         angle1 = ?,
         angle2 = ?,
         angle3 = ?,
         angle4 = ?,
         angle5 = ?,
         order_sheet_id = ?
-    WHERE id = ?`, [category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id, id])
+    WHERE id = ?`, [identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id, id])
     return getFoldingById(id)
     } else {
-        return `Pliage inchangé ! Veuillez remplir tous les champs en vérifiant leurs noms : category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, angle1, angle2, angle3, angle4, angle5, order_sheet_id`
+        return `Pliage inchangé ! Veuillez remplir tous les champs en vérifiant leurs noms : identification, category, type, ral, thickness, quantity, length, dim1, dim2, dim3, dim4, dim5, dim6, dev, angle1, angle2, angle3, angle4, angle5, order_sheet_id`
     }
 }
 
