@@ -1,5 +1,5 @@
 import express from 'express';
-import { getOrderSheets, getOrderSheetById, createOrderSheet, updateOrderSheet, deleteOrderSheetById } from '../Querries/orderSheets.js';
+import { getOrderSheets, getOrderSheetById, createOrderSheet, updateOrderSheet, deleteOrderSheetById, getOrderSheetsByWorksiteId } from '../Querries/orderSheets.js';
 import { getWorkSiteById } from '../Querries/workSites.js';
 import { getAddressById } from '../Querries/addresses.js';
 import { getFoldingsByOrderSheetId } from '../Querries/foldings.js';
@@ -111,6 +111,14 @@ router.delete('/:id', async (req, res) => {
     // Sinon supprimer la fiche de commande
     const orderSheet = await deleteOrderSheetById(id);
     res.send(orderSheet);
+})
+
+
+// Trouve les order_sheets en fonction de worksite_id
+router.get('/work_site/:work_site_id', async (req, res) => {
+    const worksite_id = req.params.work_site_id;
+    const order_sheets = await getOrderSheetsByWorksiteId(worksite_id);
+    res.send(order_sheets);
 })
 
 export default router;
