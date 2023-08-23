@@ -1,6 +1,8 @@
 import express from 'express';
 import { getWorksManagers, getWorksManagerById, createWorksManager, updateWorksManager, deleteWorksManagerById } from '../Querries/worksManagers.js';
 import { getWorkSitesByWorksManagerId } from '../Querries/workSites.js';
+import bcrypt from 'bcrypt';
+// import { Jwt } from 'jsonwebtoken';
 
 const router = express.Router();
 
@@ -20,7 +22,9 @@ router.get('/:id', async (req, res) => {
 // Ajoute un worksManager
 router.post('/', async (req, res) => {
     const { firstname, lastname, mail, login, password } = req.body;
-    const worksManager = await createWorksManager(firstname, lastname, mail, login, password);
+
+    const hashpassword = await bcrypt.hash(password, 13);
+    const worksManager = await createWorksManager(firstname, lastname, mail, login, hashpassword);
     res.status(201).send(worksManager);
 });
 

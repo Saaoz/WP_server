@@ -14,18 +14,11 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`works_manager` (
     `lastname` VARCHAR(50) NOT NULL,
     `mail` VARCHAR(50) NOT NULL,
     `login` VARCHAR(50) NOT NULL,
-    `password` VARCHAR(50) NOT NULL,
+    `password` LONGTEXT NOT NULL,
     PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
--- Insert 5 works managers
-INSERT INTO `wibaux_foldings`.`works_manager` (`id`, `firstname`, `lastname`, `mail`, `login`, `password`)
-VALUES (NULL, 'John', 'Doe', 'johndoe@example.com', 'john', 'passwordJohn'),
-        (NULL, 'Alice', 'Smith', 'alicesmith@example.com', 'alice', 'passwordAlice'),
-        (NULL, 'Lisa', 'Johnson', 'lisajohnson@example.com' , 'lisa', 'passwordLisa'),
-        (NULL, 'Karen', 'Brown', 'karenbrown@example.com', 'karen', 'passwordKaren'),
-        (NULL, 'Susan', 'Wilson', 'susanwilson@example.com', 'susan', 'passwordSusan');
-
+-- Insert works managers manualy
 
 -- -----------------------------------------------------
 -- Table `wibaux_foldings`.`address`

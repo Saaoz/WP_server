@@ -13,6 +13,14 @@ export async function getWorksManagerById(id) {
     return rows[0]
 }
 
+export async function getWorksManagerByMail(mail) {
+    const [rows] = await pool.query(`
+    SELECT *
+    FROM works_manager
+    WHERE mail = ?`, [mail])
+    return rows[0]
+}
+
 export async function createWorksManager(firstname, lastname, mail, login, password) {
     if (firstname && lastname && mail && login && password) {
     const [result] = await pool.query(`
