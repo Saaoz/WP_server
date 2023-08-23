@@ -33,27 +33,27 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`address` (
 ENGINE = InnoDB;
 
 -- Insert 10 addresses différentes
-INSERT  INTO `wibaux_foldings`.`address` (`id`, `street`, `postal_code`, `city`)
-VALUES (NULL, '25 rue du Faubourg Saint-Honoré', '75008', 'Paris'),
-        (NULL, '3 avenue des Fleurs', '06000', 'Nice'),
-        (NULL, '14 rue de la République', '69001', 'Lyon'),
-        (NULL, '2 rue de la Gare', '67000', 'Strasbourg'),
-        (NULL, '6 place Bellecour', '69002', 'Lyon'),
-        (NULL, '10 rue des Rosiers', '75004', 'Paris'),
-        (NULL, '18 rue de la Pompe', '75116', 'Paris'),
-        (NULL, '7 rue des Ecoles', '33000', 'Bordeaux'),
-        (NULL, '15 avenue des Acacias', '75017', 'Paris'),
-        (NULL, '28 rue des Lombards', '75004', 'Paris'),
-        (NULL, '11 rue du Marché', '67000', 'Strasbourg'),
-        (NULL, '9 avenue Foch', '75016', 'Paris'),
-        (NULL, '16 rue des Capucins', '69001', 'Lyon'),
-        (NULL, '2 rue des Cordeliers', '59000', 'Lille'),
-        (NULL, '27 avenue de la Victoire', '06000', 'Nice'),
-        (NULL, '1 rue de la Roquette', '75011', 'Paris'),
-        (NULL, '4 rue du Petit Musc', '75004', 'Paris'),
-        (NULL, '20 rue de la Pompe', '75116', 'Paris'),
-        (NULL, '12 rue de la Paix', '44000', 'Nantes'),
-        (NULL, '33 avenue de la Grande Armée', '75116', 'Paris');
+-- INSERT  INTO `wibaux_foldings`.`address` (`id`, `street`, `postal_code`, `city`)
+-- VALUES (NULL, '25 rue du Faubourg Saint-Honoré', '75008', 'Paris'),
+--         (NULL, '3 avenue des Fleurs', '06000', 'Nice'),
+--         (NULL, '14 rue de la République', '69001', 'Lyon'),
+--         (NULL, '2 rue de la Gare', '67000', 'Strasbourg'),
+--         (NULL, '6 place Bellecour', '69002', 'Lyon'),
+--         (NULL, '10 rue des Rosiers', '75004', 'Paris'),
+--         (NULL, '18 rue de la Pompe', '75116', 'Paris'),
+--         (NULL, '7 rue des Ecoles', '33000', 'Bordeaux'),
+--         (NULL, '15 avenue des Acacias', '75017', 'Paris'),
+--         (NULL, '28 rue des Lombards', '75004', 'Paris'),
+--         (NULL, '11 rue du Marché', '67000', 'Strasbourg'),
+--         (NULL, '9 avenue Foch', '75016', 'Paris'),
+--         (NULL, '16 rue des Capucins', '69001', 'Lyon'),
+--         (NULL, '2 rue des Cordeliers', '59000', 'Lille'),
+--         (NULL, '27 avenue de la Victoire', '06000', 'Nice'),
+--         (NULL, '1 rue de la Roquette', '75011', 'Paris'),
+--         (NULL, '4 rue du Petit Musc', '75004', 'Paris'),
+--         (NULL, '20 rue de la Pompe', '75116', 'Paris'),
+--         (NULL, '12 rue de la Paix', '44000', 'Nantes'),
+--         (NULL, '33 avenue de la Grande Armée', '75116', 'Paris');
 
 
 -- -----------------------------------------------------
@@ -81,28 +81,28 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`worksite` (
 ENGINE = InnoDB;
 
 -- Insert 20 worksites
-INSERT INTO `wibaux_foldings`.`worksite` (`id`, `name`, `works_manager_id`, `address_id`)
-VALUES 
-(NULL, 'Parking Leclerc', 3, 1),
-(NULL, 'Centre commercial', 2, 5),
-(NULL, 'Hôtel de ville', 1, 8),
-(NULL, 'Immeuble de standing', 5, 16),
-(NULL, 'Résidence étudiante', 4, 11),
-(NULL, 'Maison individuelle', 3, 3),
-(NULL, 'Centre sportif', 1, 19),
-(NULL, 'Ecole primaire', 2, 6),
-(NULL, 'Clinique privée', 4, 9),
-(NULL, 'Usine de production', 5, 7),
-(NULL, "Musée d'art moderne", 1, 13),
-(NULL, 'Bibliothèque municipale', 2, 15),
-(NULL, 'Immeuble de bureaux', 3, 10),
-(NULL, 'Parc résidentiel', 4, 2),
-(NULL, 'Salle de spectacle', 5, 14),
-(NULL, 'Centre de recherche', 1, 12),
-(NULL, 'Gare ferroviaire', 2, 18),
-(NULL, 'Stade municipal', 3, 17),
-(NULL, 'Théâtre de la ville', 4, 20),
-(NULL, 'Piscine municipale', 5, 4);
+-- INSERT INTO `wibaux_foldings`.`worksite` (`id`, `name`, `works_manager_id`, `address_id`)
+-- VALUES 
+-- (NULL, 'Parking Leclerc', 3, 1),
+-- (NULL, 'Centre commercial', 2, 5),
+-- (NULL, 'Hôtel de ville', 1, 8),
+-- (NULL, 'Immeuble de standing', 5, 16),
+-- (NULL, 'Résidence étudiante', 4, 11),
+-- (NULL, 'Maison individuelle', 3, 3),
+-- (NULL, 'Centre sportif', 1, 19),
+-- (NULL, 'Ecole primaire', 2, 6),
+-- (NULL, 'Clinique privée', 4, 9),
+-- (NULL, 'Usine de production', 5, 7),
+-- (NULL, "Musée d'art moderne", 1, 13),
+-- (NULL, 'Bibliothèque municipale', 2, 15),
+-- (NULL, 'Immeuble de bureaux', 3, 10),
+-- (NULL, 'Parc résidentiel', 4, 2),
+-- (NULL, 'Salle de spectacle', 5, 14),
+-- (NULL, 'Centre de recherche', 1, 12),
+-- (NULL, 'Gare ferroviaire', 2, 18),
+-- (NULL, 'Stade municipal', 3, 17),
+-- (NULL, 'Théâtre de la ville', 4, 20),
+-- (NULL, 'Piscine municipale', 5, 4);
 
 
 
@@ -111,7 +111,7 @@ VALUES
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`order_sheet` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,   
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     `worksite_id` INT NOT NULL,
     `worksite_address_id` INT NOT NULL,
     PRIMARY KEY (`id`, `worksite_id`, `worksite_address_id`),
@@ -130,28 +130,28 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`order_sheet` (
 ENGINE = InnoDB;
 
 -- Insert 20 order_sheet différentes
-INSERT INTO `wibaux_foldings`.`order_sheet` (`id`, `worksite_id`, `worksite_address_id`)
-VALUES 
-(NULL, 3, 1),
-(NULL, 2, 5),
-(NULL, 1, 8),
-(NULL, 5, 16),
-(NULL, 4, 11),
-(NULL, 3, 3),
-(NULL, 1, 19),
-(NULL, 2, 6),
-(NULL, 4, 9),
-(NULL, 5, 7),
-(NULL, 1, 13),
-(NULL, 2, 15),
-(NULL, 3, 10),
-(NULL, 4, 2),
-(NULL, 5, 14),
-(NULL, 1, 12),
-(NULL, 2, 18),
-(NULL, 3, 17),
-(NULL, 4, 20),
-(NULL, 5, 4);
+-- INSERT INTO `wibaux_foldings`.`order_sheet` (`id`, `worksite_id`, `worksite_address_id`)
+-- VALUES 
+-- (NULL, 3, 1),
+-- (NULL, 2, 5),
+-- (NULL, 1, 8),
+-- (NULL, 5, 16),
+-- (NULL, 4, 11),
+-- (NULL, 3, 3),
+-- (NULL, 1, 19),
+-- (NULL, 2, 6),
+-- (NULL, 4, 9),
+-- (NULL, 5, 7),
+-- (NULL, 1, 13),
+-- (NULL, 2, 15),
+-- (NULL, 3, 10),
+-- (NULL, 4, 2),
+-- (NULL, 5, 14),
+-- (NULL, 1, 12),
+-- (NULL, 2, 18),
+-- (NULL, 3, 17),
+-- (NULL, 4, 20),
+-- (NULL, 5, 4);
 
 -- -----------------------------------------------------
 -- Table `wibaux_foldings`.`folding`
@@ -189,18 +189,18 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`folding` (
 ENGINE = InnoDB;
 
 -- Insert 40 pliages différents
-INSERT INTO `wibaux_foldings`.`folding` (`identification`, `category`, `type`, `ral`, `thickness`, `quantity`, `length`, `dim1`, `dim2`, `dim3`, `dim4`, `dim5`, `dim6`, `dev`, `angle1`, `angle2`, `angle3`, `angle4`, `angle5`, `order_sheet_id`)
-VALUES 
-('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 353423, 321, 321, NULL, NULL, NULL, 1),
-('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 5685, NULL, NULL, 32423423, 321, 321, NULL, NULL, NULL, 2),
-('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3243, 321, 321, NULL, NULL, NULL, 3),
-('B','Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3243, 321, 321, NULL, NULL, NULL, 4),
-('A','Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 324, 321, 321, NULL, NULL, NULL, 5),
-('C','Tôle de tente', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3673, 321, 321, NULL, NULL, NULL, 6),
-('A','Pikachu', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 3572, 156, 239, NULL, NULL, NULL, 7),
-('A','Dracaufeu', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 9546, 156, 239, NULL, NULL, NULL, 8),
-('D','Tortank', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 573, 156, 239, NULL, NULL, NULL, 9),
-('A','Florizarre', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 10);
+-- INSERT INTO `wibaux_foldings`.`folding` (`identification`, `category`, `type`, `ral`, `thickness`, `quantity`, `length`, `dim1`, `dim2`, `dim3`, `dim4`, `dim5`, `dim6`, `dev`, `angle1`, `angle2`, `angle3`, `angle4`, `angle5`, `order_sheet_id`)
+-- VALUES 
+-- ('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 353423, 321, 321, NULL, NULL, NULL, 1),
+-- ('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 5685, NULL, NULL, 32423423, 321, 321, NULL, NULL, NULL, 2),
+-- ('A', 'Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3243, 321, 321, NULL, NULL, NULL, 3),
+-- ('B','Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3243, 321, 321, NULL, NULL, NULL, 4),
+-- ('A','Bavette', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 324, 321, 321, NULL, NULL, NULL, 5),
+-- ('C','Tôle de tente', 'Acier', 2653, 12421, 4, 546, 654, 657, 531, 1256, NULL, NULL, 3673, 321, 321, NULL, NULL, NULL, 6),
+-- ('A','Pikachu', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 3572, 156, 239, NULL, NULL, NULL, 7),
+-- ('A','Dracaufeu', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 9546, 156, 239, NULL, NULL, NULL, 8),
+-- ('D','Tortank', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, 573, 156, 239, NULL, NULL, NULL, 9),
+-- ('A','Florizarre', 'Inox', 9010, 5120, 8, 763, 328, 176, 92, 1256, NULL, NULL, NULL, 156, 239, NULL, NULL, NULL, 10);
 
 
 -- -----------------------------------------------------
@@ -221,15 +221,15 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`supplier` (
 ENGINE = InnoDB;
 
 -- insert supplier
-INSERT INTO `wibaux_foldings`.`supplier` (`name`, `mail`, `folding_id`)
-VALUES 
-('Fournisseur 1', 'fournisseur1@gmail.com', 1),
-('Fournisseur 2', 'fournisseur2@gmail.com', 2),
-('Fournisseur 3', 'fournisseur3@gmail.com', 3),
-('Fournisseur 4', 'fournisseur4@gmail.com', 4),
-('Fournisseur 5', 'fournisseur5@gmail.com', 5),
-('Fournisseur 6', 'fournisseur6@gmail.com', 6),
-('Fournisseur 7', 'fournisseur7@gmail.com', 7),
-('Fournisseur 8', 'fournisseur8@gmail.com', 8),
-('Fournisseur 9', 'fournisseur9@gmail.com', 9),
-('Fournisseur 10', 'fournisseur10@gmail.com', 10);
+-- INSERT INTO `wibaux_foldings`.`supplier` (`name`, `mail`, `folding_id`)
+-- VALUES 
+-- ('Fournisseur 1', 'fournisseur1@gmail.com', 1),
+-- ('Fournisseur 2', 'fournisseur2@gmail.com', 2),
+-- ('Fournisseur 3', 'fournisseur3@gmail.com', 3),
+-- ('Fournisseur 4', 'fournisseur4@gmail.com', 4),
+-- ('Fournisseur 5', 'fournisseur5@gmail.com', 5),
+-- ('Fournisseur 6', 'fournisseur6@gmail.com', 6),
+-- ('Fournisseur 7', 'fournisseur7@gmail.com', 7),
+-- ('Fournisseur 8', 'fournisseur8@gmail.com', 8),
+-- ('Fournisseur 9', 'fournisseur9@gmail.com', 9),
+-- ('Fournisseur 10', 'fournisseur10@gmail.com', 10);
