@@ -8,7 +8,6 @@ const login = async (req, res) => {
     try {
         const mail = req.body.mail
         const password = req.body.password
-        console.log(mail, password)
         const worksManager = await getWorksManagerByMail(mail)
 
         if (!worksManager) {
