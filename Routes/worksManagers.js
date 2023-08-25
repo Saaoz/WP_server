@@ -21,11 +21,17 @@ router.get('/:id', async (req, res) => {
 
 // Ajoute un worksManager
 router.post('/', async (req, res) => {
-    const { firstname, lastname, mail, password } = req.body;
+    try {
+        const { firstname, lastname, mail, password } = req.body;
 
-    const hashpassword = await bcrypt.hash(password, 13);
-    const worksManager = await createWorksManager(firstname, lastname, mail, hashpassword);
-    res.status(201).send(worksManager);
+        const hashPassword = await bcrypt.hash(password, 13);
+        const worksManager = await createWorksManager(firstname, lastname, mail, hashPassword);
+
+        res.status(201).json(worksManager);
+    } catch (error) {
+        console.error("An error occurred:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
 });
 
 // Modifie un worksManager

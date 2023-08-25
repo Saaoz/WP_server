@@ -21,17 +21,22 @@ export async function getWorksManagerByMail(mail) {
     return rows[0]
 }
 
+
 export async function createWorksManager(firstname, lastname, mail, password) {
     if (firstname && lastname && mail && password) {
-    const [result] = await pool.query(`
-    INSERT
-    INTO works_manager 
-    (firstname, lastname, mail, password)
-    VALUES (?, ?, ?, ?, ?)`, [firstname, lastname, mail, password])
-    const id = result.insertId
-    return getWorksManagerById(id)
+        try {
+            const [result] = await pool.query(`
+                INSERT INTO works_manager 
+                (firstname, lastname, mail, password)
+                VALUES (?, ?, ?, ?)`, [firstname, lastname, mail, password]);
+
+            const id = result.insertId;
+            return getWorksManagerById(id);
+        } catch (error) {
+            console.log(error);
+        }
     } else {
-        return `Conducteur de travaux non créé ! Veuillez remplir tous les champs en vérifiant leurs noms : firstname, lastname, mail, password`
+        return "Conducteur de travaux non créé ! Veuillez remplir tous les champs en vérifiant leurs noms : firstname, lastname, mail, password";
     }
 }
 
