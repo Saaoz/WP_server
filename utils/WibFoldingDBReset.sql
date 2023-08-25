@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS `wibaux_foldings`.`works_manager` (
     `firstname` VARCHAR(50) NOT NULL,
     `lastname` VARCHAR(50) NOT NULL,
     `mail` VARCHAR(50) NOT NULL,
-    `login` VARCHAR(50) NOT NULL,
     `password` LONGTEXT NOT NULL,
     PRIMARY KEY (`id`))
 ENGINE = InnoDB;
