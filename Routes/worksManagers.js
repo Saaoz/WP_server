@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
         const hashPassword = await bcrypt.hash(password, 13);
         const worksManager = await createWorksManager(firstname, lastname, mail, hashPassword);
 
-        res.status(201).json(worksManager);
+        res.status(201).send(worksManager);
     } catch (error) {
         console.error("An error occurred:", error);
         res.status(500).json({ error: "Internal server error" });
